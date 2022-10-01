@@ -1,0 +1,12 @@
+{
+  "description": "Adds a parity bit to the end of the tape",
+  "tape": "010_",
+  "rules": [
+    [0, 0, 0, 0, "right"],
+    [0, 1, 1, 1, "right"],
+    [0, "_", 2, 0, "stay"],
+    [1, 0, 1, 0, "right"],
+    [1, 1, 0, 1, "right"],
+    [1, "_", 2, 1, "stay"]
+  ]
+}

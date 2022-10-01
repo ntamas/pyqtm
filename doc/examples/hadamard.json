@@ -1,0 +1,11 @@
+{
+  "description": "Processes each bit on the tape as if it was passed through a Hadamard gate, until the first empty cell on the tape",
+  "tape": "010_",
+  "rules": [
+    [0, 0, 0, 0, "right", 1],
+    [0, 0, 0, 1, "right", 1],
+    [0, 1, 0, 0, "right", 1],
+    [0, 1, 0, 1, "right", -1],
+    [0, "_", 0, "_", "stay"]
+  ]
+}
