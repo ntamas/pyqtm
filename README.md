@@ -2,7 +2,7 @@
 
 ## Reuqirements
 
-* Python 3.10 or later.
+* Python 3.8 or later.
 
 * `poetry` for virtualenv management (optional).
 
