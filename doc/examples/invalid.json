@@ -1,0 +1,14 @@
+{
+  "description": "Example of a machine with a non-unitary time evolution operator that collapses the state vector into zero length due to non-reversibility",
+  "tape": "1",
+  "rules": [
+    "State 0: create superposition on the first bit with a Hadamard gate",
+    [0, 0, 1, 0, "stay", 1],
+    [0, 0, 1, 1, "stay", 1],
+    [0, 1, 1, 0, "stay", 1],
+    [0, 1, 1, 1, "stay", -1],
+    "State 1: overwrite the cell unconditionally to zero",
+    [1, 0, 2, 0, "stay"],
+    [1, 1, 2, 0, "stay"]
+  ]
+}
