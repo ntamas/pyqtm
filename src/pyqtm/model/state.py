@@ -191,7 +191,8 @@ class QuantumState(Sequence[Amplitude]):
             reverse: whether to sort state indices with higher probabilities
                 first (``True``) or last (``False``)
         """
-        result = abs(self._amplitudes).argsort()
+        # We use a stable sort to preserve the natural ordering of states
+        result = abs(self._amplitudes).argsort(kind="stable")
         return result[::-1] if reverse else result
 
     def state_to_index(self, indices: Sequence[int]) -> int:
