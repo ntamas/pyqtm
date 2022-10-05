@@ -17,7 +17,7 @@
 
 3. Run `poetry run pyqtm` to run the application.
 
-### Local installation witout `poetry`
+### Local installation without `poetry`
 
 1. Check out this repository to your machine.
 
