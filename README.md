@@ -90,6 +90,8 @@ also applied:
   values like `1 + sqrt(2)` exactly -- just use a probability amplitude of 1
   for multiple rules and they will automatically be normalized appropriately.
   See `doc/examples/hadamard.json` for an example.
+* In the `rules` array, you can add arbitrary strings as comments; these will
+  be ignored by the parser.
 
 ## Caveats
 
