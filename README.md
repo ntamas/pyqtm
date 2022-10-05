@@ -95,10 +95,16 @@ also applied:
 
 ## Caveats
 
-Most naive specifications of quantum Turing machines do not result in an
-unitary time evolution matrix (especially when you are trying to translate
-a classical Turing machine). The app will warn about non-unitary transition
-matrices, but it will still try to run the dynamics. If you get nonsensical
-results, this means that the machine has somehow transitioned into a state
-where the time evolution matrix did not preseve the length of the state vector.
+* This particular implementation uses a _circular_ tape, i.e. moving right from
+  the rightmost cell will place the head on top of the leftmost cell and vice
+  versa. This avoids problems arising from the increase of the number of tape
+  cells that you need to track in case when the head is always moving in the
+  same direction.
+
+* Most naive specifications of quantum Turing machines do not result in an
+  unitary time evolution matrix (especially when you are trying to translate
+  a classical Turing machine). The app will warn about non-unitary transition
+  matrices, but it will still try to run the dynamics. If you get nonsensical
+  results, this means that the machine has somehow transitioned into a state
+  where the time evolution matrix did not preseve the length of the state vector.
 
