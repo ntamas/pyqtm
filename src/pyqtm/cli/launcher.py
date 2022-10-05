@@ -4,11 +4,12 @@ entry point.
 
 from argparse import ArgumentParser
 from json import load
-from typing import List, Optional, Tuple
+from typing import Optional
 
 import sys
 
 from pyqtm.model import QuantumTuringMachine
+from pyqtm.utils import is_unitary
 
 from .formatting import format_amplitude, format_machine_state
 
@@ -59,6 +60,12 @@ def _main(
         spec["tape"] = input
 
     machine = QuantumTuringMachine.from_json(spec)
+    if not is_unitary(machine._operator):
+        print(
+            "WARNING: time evolution operator of machine is not unitary",
+            file=sys.stderr,
+        )
+
     schedule = ([1] * (num_steps + 1)) if detailed else [num_steps]
     total_steps = 0
 
