@@ -47,6 +47,13 @@ def create_parser() -> ArgumentParser:
     return parser
 
 
+def print_machine_state(time: int, machine: QuantumTuringMachine, *, eps: float = 1e-4) -> None:
+    print(f"T={time}")
+    for state, amplitude in machine.state.iter_states(sort=True, reverse=True):
+        if abs(amplitude) >= eps:
+            print(format_machine_state(state), "  P:", format_amplitude(amplitude))
+
+
 def _main(
     filename: str,
     input: Optional[str] = None,
@@ -69,19 +76,16 @@ def _main(
     schedule = ([1] * (num_steps + 1)) if detailed else [num_steps]
     total_steps = 0
 
+    if detailed:
+        print_machine_state(total_steps, machine)
+
     for steps_to_take in schedule:
-        if detailed:
-            print(f"T={total_steps}")
-
-        for state, amplitude in machine.state.iter_states(sort=True, reverse=True):
-            if abs(amplitude) >= 1e-4:
-                print(format_machine_state(state), "  P:", format_amplitude(amplitude))
-
         total_steps += steps_to_take
         machine.simulate(steps_to_take)
 
         if detailed:
             print("-" * 50)
+        print_machine_state(total_steps, machine)
 
     return 0
 
